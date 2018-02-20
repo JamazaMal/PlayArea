@@ -8,7 +8,7 @@ def prime_sum(n):
     for num, ip in enumerate(pr):
         if ip:
             s = s + num
-            #Silly test
+#           Silly test
             pr[num*2::num] = [False] * (n//num-1)
     return s
 
