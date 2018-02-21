@@ -33,5 +33,3 @@ def main():
     print("Found {0} in {1} seconds.".format(n * (n+1) / 2, time.time() - st))
 
 
-main()
-
