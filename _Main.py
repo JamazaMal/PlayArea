@@ -1,4 +1,4 @@
-import eu1
-import eu2
+import eu012
 
-eu1.main()
+
+eu012.main()
