@@ -13,5 +13,6 @@ def prime_sum(n):
     return s
 
 
-st = time.time()
-print("{0} in {1} seconds".format(prime_sum(2000000), time.time()-st))
+def main():
+    st = time.time()
+    print("{0} in {1} seconds".format(prime_sum(2000000), time.time()-st))
