@@ -1,4 +1,3 @@
-import time
 mx = 15000  # Random Search depth limit
 divs = [0] * (mx)
 
@@ -19,7 +18,6 @@ def cdiv(n):
 
 
 def main():
-    st = time.time()
     for n in range(3, mx):
         if n % 2 == 0:
             x = cdiv(n//2) * cdiv(n+1)
@@ -30,6 +28,6 @@ def main():
             if x > 500:
                 break
 
-    print("Found {0} in {1} seconds.".format(n * (n+1) / 2, time.time() - st))
+    print(n * (n+1) / 2)
 
 

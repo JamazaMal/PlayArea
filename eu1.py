@@ -1,6 +1,3 @@
-import time
-
-
 def prime_sum(n):
     pr = [True] * (n+1)
     pr[0], pr[1] = [False] * 2
@@ -14,5 +11,4 @@ def prime_sum(n):
 
 
 def main():
-    st = time.time()
-    print("{0} in {1} seconds".format(prime_sum(2000000), time.time()-st))
+    print(prime_sum(2000000))
