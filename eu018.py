@@ -17,9 +17,6 @@ tri = tri + [[4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23]]
 
 def main():
     global tri
-    i = 0
-    j = 0
-
     for i in range(len(tri)-2, -1, -1):
         for j in range(len(tri[i])):
             tri[i][j] = tri[i][j]  + max([tri[i+1][j], tri[i+1][j+1]])
