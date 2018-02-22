@@ -15,12 +15,12 @@ def f(a, b, n):
 def main():
     ps = prime_sieve(100000)
     bst = 0
-    for j in range(0, 1001):
-        if j in ps:
-            for i in range(-999, 1000):
+    for j in ps:
+        if j < 1001:
+            for i in range(-999, 1000, 2):
                 n = 0
                 while f(i, j, n) in ps:
                     n = n + 1
                 if n > bst:
                     bst = n
-                    print("n^2 + {}n + {} | {} primes.".format(i, j, n))
+                    print("n^2 + {}n + {} | {} primes. ({})".format(i, j, n, i*j))
