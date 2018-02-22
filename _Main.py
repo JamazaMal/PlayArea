@@ -1,6 +1,6 @@
 import time
-import eu021 as PB
+import eu022 as PB
 
 st = time.time()
 PB.main()
-print("Duration : {0} seconds.".format(time.time()-st))
+print("Duration : {} seconds.".format(time.time()-st))

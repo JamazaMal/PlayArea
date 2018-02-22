@@ -13,6 +13,8 @@ def cdiv(n):
             c = c + 2
     if (n**0.5).is_integer():
         c = c + 1
+
+
     divs[n] = c
     return c
 
