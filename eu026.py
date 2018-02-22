@@ -1,6 +1,5 @@
 mx = 1000
-ps = [True] * (mx // 2)
-
+ps = []
 
 def prime_sieve(n):
     sieve = [True] * (n // 2)
@@ -16,7 +15,8 @@ def f(N):
         return 3
     for d in ps[::-1]:
         period = 1
-        while pow(10, period) % d != 1: period += 1
+        while pow(10, period) % d != 1:
+            period += 1
         if d-1 == period:
             return d
 
