@@ -1,18 +1,18 @@
-from math import log10
+import itertools
 
 
-def primes(n):
-    mx = 0
-    prs = [True] * (n+1)
-    prs[0], prs[1] = [False] * 2
-    for i, v in enumerate(prs):
-        if v:
-            ss = set(str(c) for c in range(1, int(log10(i)+1)+1))
-            if set(str(i)) == ss and len(str(i)) == len(ss):
-                mx = i
-            prs[i*2::i] = [False] * ((n//i)-1)
-    return mx
+def isPrime(n):
+    for i in range(2, int(n**0.5)):
+        if n%i == 0 :
+            return False
+    return True
 
 
 def main():
-    print(primes(7654322))
+    mx = 0
+    for ll in itertools.permutations(["7", "6", "5", "4", "3", "2", "1"]):
+        i = int("".join(ll))
+        if isPrime(i) and i > mx:
+            mx = i
+            print(i)
+
