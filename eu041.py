@@ -9,10 +9,9 @@ def isPrime(n):
 
 
 def main():
-    mx = 0
     for ll in itertools.permutations(["7", "6", "5", "4", "3", "2", "1"]):
         i = int("".join(ll))
-        if isPrime(i) and i > mx:
-            mx = i
+        if isPrime(i):
             print(i)
+            break
 
