@@ -1,9 +1,8 @@
 def is_prime(n):
-    return all(n % i for i in range(2, int(n**.5+1)))
+    return all(n % i for i in range(2, int(n**.5)+1))
 
 
 def main():
-    prime_count = 8
 
     filset = ("AXXXB", "XAXXB", "XXAXB", "XXXAB")
     filset += ("ABXXXC", "AXBXXC", "AXXBXC", "AXXXBC")
@@ -19,7 +18,7 @@ def main():
             if i > 99:
                 st = st.replace("C", str(i)[2])
 
-            if sum(is_prime(int(st.replace("X", str(k)))) for k in range(10) if k > 0 or st[0] != "X") == prime_count:
+            if sum(is_prime(int(st.replace("X", str(k)))) for k in range(10) if k > 0 or st[0] != "X") >= 8:
                 for j in range(10):
                     if is_prime(int(st.replace("X", str(j)))):
                         print(st.replace("X", str(j)))
