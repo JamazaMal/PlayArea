@@ -1,43 +1,26 @@
-import itertools
-mx = 100000
-
-def get_primes():
-    ret = list()
-    ps = [True]*(mx + 1)
-    ps[0], ps[1] = [False] * 2
-
-    for i, v in enumerate(ps):
-        if v:
-            ret.append(i)
-            ps[i*2::i] = [False] * ((mx//i)-1)
-
-    return ret
-
-
-def get_positions(l,n):
-    return set([k for k in itertools.permutations([True]*l + [False]*n) if k[l+n-1]])
-
-
-def replace_digits(nset, nums):
-    n = 0
-    s = ""
-    for b in nset:
-        if b:
-            s = s + nums[n]
-            n = n + 1
-        else:
-            s = s + "x"
-    return [int(s.replace("x", str(i))) for i in range(0,10) ]
+def is_prime(n):
+    return all(n % i for i in range(2, int(n**.5+1)))
 
 
 def main():
-    prm = get_primes()
-    bst = 0
-    for i in range(101, 10000, 2):
-        for j in range(1, len(str(i))):
-            p = get_positions(len(str(i)), j)
-            for pp in p:
-                t = sum(1 for k in replace_digits(pp, str(i)) if k in prm)
-                if t > bst:
-                    bst = t
-                    print(t, replace_digits(pp, str(i)))
+    prime_count = 8
+
+    filset = ("AXXXB", "XAXXB", "XXAXB", "XXXAB")
+    filset += ("ABXXXC", "AXBXXC", "AXXBXC", "AXXXBC")
+    filset += ("XABXXC", "XAXBXC", "XAXXBC")
+    filset += ("XXABXC", "XXAXBC", "XXXABC")
+
+    for i in range(11, 1000, 2):
+        for ss in filset:
+            if len(ss) == 6 and i < 100:
+                break
+
+            st = ss.replace("A", str(i)[0]).replace("B", str(i)[1])
+            if i > 99:
+                st = st.replace("C", str(i)[2])
+
+            if sum(is_prime(int(st.replace("X", str(k)))) for k in range(10) if k > 0 or st[0] != "X") == prime_count:
+                for j in range(10):
+                    if is_prime(int(st.replace("X", str(j)))):
+                        print(st.replace("X", str(j)))
+                        return
