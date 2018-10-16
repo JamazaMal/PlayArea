@@ -21,4 +21,3 @@ def main():
             if sorted(str(p1*p2)) == sorted(str((p1-1)*(p2-1))):
                 print(p1, p2, p1 * p2)
                 return
-
