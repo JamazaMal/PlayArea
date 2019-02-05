@@ -1,23 +1,24 @@
 import csv
 
-
 def main():
-    with open("081.txt", 'r') as myFile:
+    with open("082.txt", 'r') as myFile:
         data = [[int(j) for j in i] for i in csv.reader(myFile, delimiter=',')]
 
-    # Do the first line differently (Only one path)
-    for c in range(1, 80):
-        data[0][c] += data[0][c-1]
+    sol = [0] * len(data)
 
-    # Now do the rest of the grid
-    for r in range(1, 80):
-        # First column in each row, can only come from one place
-        data[r][0] += data[r-1][0]
-        # Rest of the columns, have a choice
-        for c in range(1,80):
-            if data[r-1][c] < data[r][c-1]:
-                data[r][c] += data[r-1][c]
-            else:
-                data[r][c] += data[r][c-1]
+    # Initiate sol to first column
+    for r in range(0, len(data)):
+        sol[r] = data[r][0]
 
-    print(data[79][79])
+    # Manage rest of the columns
+    for c in range(1, len(data[0])):
+        # Check Left and up
+        sol[0] = data[0][c] + sol[0]
+        for r in range(1, len(data)):
+            sol[r] = data[r][c] + min(sol[r], sol[r-1])
+
+        # Check down
+        for r in range(len(data)-2, -1, -1):
+            sol[r] = min(sol[r], (sol[r+1] + data[r][c]))
+
+    print(min(sol))
