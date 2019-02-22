@@ -1,16 +1,20 @@
+mk = 12000
+res = [100000] * mk
 
-def fact(_i):
-    ret = [_i]
-    for i in range(2, _i):
-        if _i % i == 0:
-            ret.append([_i/i]+[fact(i)])
-    return(ret)
+def nextFact(pd, sm, fc, lf):
+    k = pd - sm + fc
+    if k < mk:
+        if pd < res[k]:
+            res[k] = pd
+        for i in range(lf, mk//pd*2+1):
+            nextFact(pd*i, sm+i, fc+1, i)
 
 
 def main():
-    for x in fact(32):
-        print(x)
+    nextFact(1, 1, 1, 2)
+    #print(res)
+    print(sum(set(res[2:])))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
