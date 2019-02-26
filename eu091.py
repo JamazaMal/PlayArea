@@ -1,8 +1,12 @@
+from math import gcd
+
+
 def main():
-    mx = 51
-    for x1 in range(mx):
-        for x2 in range(mx):
-            for y1 in range(mx):
-                for y2 in range(mx):
-                    pass
-        print(x1)
+    mx = 50
+    res = mx * mx * 3  # Count of simple triangles
+    for x in range(1, mx+1):
+        for y in range(1, mx+1):
+            f = gcd(x, y)
+            res += min(y*f//x, (mx-x)*f//y) * 2
+
+    print(res)
