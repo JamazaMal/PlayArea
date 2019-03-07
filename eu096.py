@@ -155,7 +155,12 @@ def main():
         while brd.stripone() or brd.striponly():
             pass
 
-        res += brd.block(0,0).value * 100 +  brd.block(0,1).value * 10 + brd.block(0,2).value
+        if i == 1:
+            print(" {} ------------------".format(i+1))
+            showme(brd)
+
+        res += (brd.block(0, 0).value * 100) + (brd.block(0, 1).value * 10) + brd.block(0, 2).value
         brd.reset()
     print(res)
+
 
