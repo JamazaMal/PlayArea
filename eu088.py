@@ -1,6 +1,7 @@
 mk = 12000
 res = [100000] * mk
 
+
 def nextFact(pd, sm, fc, lf):
     k = pd - sm + fc
     if k < mk:
@@ -12,7 +13,6 @@ def nextFact(pd, sm, fc, lf):
 
 def main():
     nextFact(1, 1, 1, 2)
-    #print(res)
     print(sum(set(res[2:])))
 
 
