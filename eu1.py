@@ -11,4 +11,4 @@ def prime_sum(n):
 
 
 def main():
-    print(prime_sum(2000000))
+    print(prime_sum(200000))
